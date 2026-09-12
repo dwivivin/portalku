@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository; 
   
 @Repository 
-@Primary 
+// @Primary 
 public class InMemoryJurnalRepository implements JurnalRepository { 
   
     private final Map<Integer, jurnal> data = new ConcurrentHashMap<>(); 

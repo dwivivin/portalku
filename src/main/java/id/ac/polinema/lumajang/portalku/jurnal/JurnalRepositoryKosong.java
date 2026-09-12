@@ -2,7 +2,8 @@ package id.ac.polinema.lumajang.portalku.jurnal;
 
 
 import java.util.List; 
-import java.util.Optional; 
+import java.util.Optional;
+
 import org.springframework.stereotype.Repository; 
 @Repository 
 public class JurnalRepositoryKosong implements JurnalRepository { 
