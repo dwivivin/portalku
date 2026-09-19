@@ -24,9 +24,11 @@ public class JurnalService {
         return jurnalRepository.save(jurnal); 
     } 
   
-    public void hapus(Integer id) { 
-        if (!jurnalRepository.deleteById(id)) { 
-            throw new JurnalTidakDitemukanException(id); 
-        } 
+   public void hapus(Integer id) {
+    if (!jurnalRepository.existsById(id)) {
+        throw new JurnalTidakDitemukanException(id);
+    }
+    jurnalRepository.deleteById(id);
+}
     } 
-} 
+
