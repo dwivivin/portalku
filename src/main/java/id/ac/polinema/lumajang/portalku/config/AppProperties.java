@@ -16,3 +16,4 @@ public class AppProperties {
     private int maksItem;            // terhubung ke app.maks-item 
     private String pesanSambutan;    // terhubung ke app.pesan-sambutan 
 } 
+
