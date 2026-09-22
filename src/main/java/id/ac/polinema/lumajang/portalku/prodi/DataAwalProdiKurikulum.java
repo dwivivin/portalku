@@ -5,7 +5,7 @@ import id.ac.polinema.lumajang.portalku.kurikulum.KurikulumRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 public class DataAwalProdiKurikulum implements CommandLineRunner {
 
     private final ProdiRepository prodiRepository;

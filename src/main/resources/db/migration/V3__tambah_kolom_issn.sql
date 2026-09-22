@@ -1,0 +1,2 @@
+ALTER TABLE jurnal
+ADD COLUMN issn VARCHAR(20);

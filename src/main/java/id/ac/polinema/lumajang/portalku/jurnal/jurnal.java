@@ -26,4 +26,7 @@ public class jurnal {
 
     @Column(name = "tahun_terbit", nullable = false)
     private Integer tahunTerbit;
+
+    @Column(name = "issn", length = 20)
+    private String issn;
 }

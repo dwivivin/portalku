@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 @Profile("dev") // hanya berjalan pada profil dev
 @RequiredArgsConstructor
 public class DataAwalJurnal implements CommandLineRunner {
@@ -17,8 +17,8 @@ public class DataAwalJurnal implements CommandLineRunner {
         if (jurnalRepository.count() > 0) {
             return; // jangan menggandakan data
         }
-        jurnalRepository.save(new jurnal(null, "JISEBI", "Universitas Airlangga", 2015));
+        jurnalRepository.save(new jurnal(null, "JISEBI", "Universitas Airlangga", 2015, null));
         jurnalRepository.save(
-            new jurnal(null, "Jurnal Informatika Polinema", "Politeknik Negeri Malang", 2015));
+            new jurnal(null, "Jurnal Informatika Polinema", "Politeknik Negeri Malang", 2015, null));
     }
 }
