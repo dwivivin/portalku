@@ -3,52 +3,50 @@ package id.ac.polinema.lumajang.portalku.prodi;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import id.ac.polinema.lumajang.portalku.kurikulum.Kurikulum;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import id.ac.polinema.lumajang.portalku.kurikulum.Kurikulum;
 
 @Entity
 @Table(name = "program_studi")
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Prodi {
+    public enum Jenjang { D3, D4 }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 25, unique = true)
+    @Column(nullable = false, unique = true, length = 25)
     private String kode;
 
     @Column(nullable = false, length = 100)
     private String nama;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 5)
-    public String jenjang; // ubah dari private String jenjang;
+    private Jenjang jenjang;
 
-    @OneToMany(mappedBy = "prodi", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "prodi",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
     private List<Kurikulum> daftarKurikulum = new ArrayList<>();
-
-    public Prodi(String kode, String nama, String jenjang) {
-        this.kode = kode;
-        this.nama = nama;
-        this.jenjang = jenjang;
-    }
 
     public void tambahKurikulum(Kurikulum kurikulum) {
         daftarKurikulum.add(kurikulum);
         kurikulum.setProdi(this);
+    }
+
+    public void hapusKurikulum(Kurikulum kurikulum) {
+        daftarKurikulum.remove(kurikulum);
+        kurikulum.setProdi(null);
     }
 }

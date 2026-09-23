@@ -23,11 +23,16 @@ public class DataAwalProdiKurikulum implements CommandLineRunner {
             Prodi prodiD4 = new Prodi();
             prodiD4.setKode("TRPL");
             prodiD4.setNama("Teknologi Rekayasa Perangkat Lunak");
-            prodiD4.setJenjang("D4");
+            prodiD4.setJenjang(Prodi.Jenjang.D4);
 
             // 2. Buat Data Kurikulum & Hubungkan ke Prodi
-            Kurikulum k1 = new Kurikulum("Kurikulum 2020", 2020, prodiD4);
-            Kurikulum k2 = new Kurikulum("Kurikulum Merdeka 2024", 2024, prodiD4);
+            Kurikulum k1 = new Kurikulum();
+            k1.setNama("Kurikulum 2020");
+            k1.setTahun(2020);
+
+            Kurikulum k2 = new Kurikulum();
+            k2.setNama("Kurikulum Merdeka 2024");
+            k2.setTahun(2024);
 
             prodiD4.tambahKurikulum(k1);
             prodiD4.tambahKurikulum(k2);
